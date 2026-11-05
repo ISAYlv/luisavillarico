@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Student Registration</title>
+
+    <style>
+
+        /* Para consistent ang size ng lahat ng elements,
+           hindi sila lalagpas sa kanilang container. */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Soft pink background para cute */
+        body {
+            background-color: #fff0f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px 15px;
+            color: #444;
+        }
+
+        /* Main form container.
+           Flexible ang width para hindi mag-overlap. */
+        form {
+            background-color: white;
+            width: 100%;
+            max-width: 950px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(190, 80, 130, 0.12);
+        }
+
+        /* Banner sa top para hindi plain ang page. */
+        .banner {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 15px;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        /* Main heading ng registration page. */
+        h1 {
+            text-align: center;
+            color: #d94f91;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* Short description para guided ang user. */
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Separate containers para organized ang form. */
+        .form-section {
+            background-color: #fffafd;
+            border: 1px solid #f8dce9;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        /* Section headings with pink accent. */
+        .section-title {
+            color: #d94f91;
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f7d5e5;
+        }
+
+        /* Two-column layout with controlled spacing.
+           Equal columns para hindi mag-overlap. */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 30px;
+            row-gap: 25px;
+            width: 100%;
+        }
+
+        /* Every field stays inside its own column. */
+        .form-group {
+            min-width: 0;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Labels placed above their inputs. */
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        /* Pink asterisk for required fields. */
+        .required {
+            color: #e05291;
+        }
+
+        /* Consistent design for regular input fields. */
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="time"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #e5d5de;
+            border-radius: 9px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            background-color: white;
+            color: #444;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        /* Pink outline kapag naka-focus ang user. */
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #e77bad;
+            box-shadow: 0 0 0 3px rgba(231, 123, 173, 0.15);
+        }
+
+        /* Lighter placeholder para hindi confusing. */
+        input::placeholder,
+        textarea::placeholder {
+            color: #aaa;
+        }
+
+        /* Native date and time controls stay inside
+           their own grid columns. */
+        input[type="date"],
+        input[type="time"] {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Gender options with enough spacing. */
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding-top: 5px;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: normal;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        /* Hobbies can wrap if the screen is small. */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        /* Small instructions for optional fields. */
+        .field-note {
+            color: #999;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        /* Favorite color picker stays within the column. */
+        input[type="color"] {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            height: 45px;
+            padding: 4px;
+            border: 1px solid #e5d5de;
+            border-radius: 9px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        /* Range slider uses the pink theme. */
+        input[type="range"] {
+            width: 100%;
+            min-width: 0;
+            accent-color: #e77bad;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* File upload field. */
+        input[type="file"] {
+            width: 100%;
+            max-width: 100%;
+            font-size: 13px;
+        }
+
+        /* Text area can resize vertically. */
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Terms section with light pink background. */
+        .terms {
+            background-color: #fff4f9;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 20px;
+        }
+
+        .terms label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-weight: normal;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        /* Buttons are centered with enough spacing. */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .submitbtn,
+        .resetbtn {
+            padding: 13px 28px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        /* Main action button. */
+        .submitbtn {
+            background-color: #e77bad;
+            color: white;
+            border: 1px solid #e77bad;
+        }
+
+        .submitbtn:hover {
+            background-color: #d94f91;
+            transform: translateY(-2px);
+        }
+
+        /* Secondary action button. */
+        .resetbtn {
+            background-color: white;
+            color: #777;
+            border: 1px solid #ddd;
+        }
+
+        .resetbtn:hover {
+            background-color: #f7f7f7;
+        }
+
+        /* Small footer note at the bottom. */
+        .footer-note {
+            text-align: center;
+            color: #aaa;
+            font-size: 12px;
+            margin-top: 25px;
+        }
+
+        /* Responsive design for smaller screens.
+           One column na lang para readable ang fields. */
+        @media screen and (max-width: 650px) {
+
+            body {
+                padding: 15px 10px;
+            }
+
+            form {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            .banner {
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .form-section {
+                padding: 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                column-gap: 0;
+                row-gap: 18px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .submitbtn,
+            .resetbtn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Main registration form.-->
+    <form action="index.html" method="get"
+          onsubmit="return confirm('Are you sure you want to submit your registration?');">
+
+        <!-- Banner image sa top para may visual element. -->
+        <img src="banner.webp"
+             alt="Student registration banner"
+             class="banner">
+
+        <h1>Student Registration Form</h1>
+
+        <p class="subtitle">
+            Welcome! Please complete the information below
+            to continue to the portfolio website.
+        </p>
+
+        <!-- Hidden input included for the HTML task. -->
+        <input type="hidden" name="registration" value="1">
+
+        <!-- PERSONAL AND ACADEMIC INFORMATION -->
+        <div class="form-section">
+
+            <h3 class="section-title">Personal & Academic Information</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="fullname">
+                        Full Name <span class="required">*</span>
+                    </label>
+
+                    <input type="text" id="fullname" name="fullname"
+                           placeholder="Enter your full name"
+                           autocomplete="name"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        Password <span class="required">*</span>
+                    </label>
+
+                    <input type="password" id="password" name="password"
+                           placeholder="Enter password"
+                           minlength="6"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Gender <span class="required">*</span>
+                    </label>
+
+                    <div class="radio-group">
+
+                        <label>
+                            <input type="radio" name="gender"
+                                   value="Male" required>
+                            Male
+                        </label>
+
+                        <label>
+                            <input type="radio" name="gender"
+                                   value="Female">
+                            Female
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">
+                        Age <span class="required">*</span>
+                    </label>
+
+                    <input type="number" id="age" name="age"
+                           placeholder="Enter your age"
+                           min="1" max="120"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="studentid">
+                        Student ID <span class="required">*</span>
+                    </label>
+
+                    <input type="text" id="studentid" name="studentid"
+                           placeholder="Enter your student ID"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">
+                        Course <span class="required">*</span>
+                    </label>
+
+                    <select id="course" name="course" required>
+
+                        <option value="" disabled selected>
+                            Select your course
+                        </option>
+
+                        <option value="BSIT">BSIT</option>
+                        <option value="BSCS">BSCS</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="yearlevel">
+                        Year Level <span class="required">*</span>
+                    </label>
+
+                    <select id="yearlevel" name="yearlevel" required>
+
+                        <option value="" disabled selected>
+                            Select your year level
+                        </option>
+
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">
+                        Birth Date <span class="required">*</span>
+                    </label>
+
+                    <input type="date" id="birthdate"
+                           name="birthdate" required>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CONTACT INFORMATION -->
+        <div class="form-section">
+
+            <h3 class="section-title">Contact Information</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="email">
+                        Email Address <span class="required">*</span>
+                    </label>
+
+                    <input type="email" id="email" name="email"
+                           placeholder="example@email.com"
+                           autocomplete="email"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">
+                        Phone Number <span class="required">*</span>
+                    </label>
+
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="09XXXXXXXXX"
+                           pattern="09[0-9]{9}"
+                           title="Enter a valid 11-digit Philippine mobile number starting with 09."
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Favorit Website</label>
+
+                    <input type="url" id="website" name="website"
+                           placeholder="https://example.com">
+
+                    <span class="field-note">
+                        Optional. Enter a complete website URL.
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="favoritecolor">Favorite Color</label>
+
+                    <input type="color" id="favoritecolor"
+                           name="favoritecolor" value="#e77bad">
+                </div>
+
+                <div class="form-group">
+                    <label for="happiness">Happiness Level</label>
+
+                    <input type="range" id="happiness" name="happiness"
+                           min="1" max="100" value="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="picture">Upload Picture</label>
+
+                    <input type="file" id="picture" name="picture"
+                           accept="image/*">
+
+                    <span class="field-note">
+                        Optional. Upload an image file.
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="favoritetime">
+                        Favorite Time of the Day
+                    </label>
+
+                    <input type="time" id="favoritetime"
+                           name="favoritetime">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ADDITIONAL INFORMATION -->
+        <div class="form-section">
+
+            <h3 class="section-title">Additional Information</h3>
+
+            <div class="form-group">
+
+                <label>Hobbies</label>
+
+                <!-- Checkbox allows multiple hobby selections. -->
+                <div class="checkbox-group">
+
+                    <label>
+                        <input type="checkbox" name="hobbies"
+                               value="Music">
+                        Music
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="hobbies"
+                               value="Games">
+                        Games
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="hobbies"
+                               value="Sports">
+                        Sports
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="hobbies"
+                               value="Reading">
+                        Reading
+                    </label>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="form-group">
+
+                <label for="address">Complete Address</label>
+
+                <textarea id="address" name="address"
+                          rows="4"
+                          placeholder="Enter your complete address"></textarea>
+
+            </div>
+
+            <!-- Required terms checkbox bago mag-submit. -->
+            <div class="terms">
+
+                <label>
+                    <input type="checkbox" name="terms"
+                           value="Agreed" required>
+
+                    <span>
+                        I have reviewed my information and agree
+                        to the Terms and Conditions.
+                        <span class="required">*</span>
+                    </span>
+                </label>
+
+            </div>
+
+        </div>
+
+        <!-- Submit and reset buttons. -->
+        <div class="buttons">
+
+            <input type="submit"
+                   value="Submit Registration"
+                   class="submitbtn">
+
+            <input type="reset"
+                   value="Reset Form"
+                   class="resetbtn">
+
+        </div>
+
+        <p class="footer-note">
+            Thank you for visiting my personal portfolio!
+        </p>
+
+    </form>
+
+</body>
+
+</html>

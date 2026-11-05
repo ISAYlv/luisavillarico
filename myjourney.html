@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>My Journey | My Personal Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff0f6;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        .header {
+            background-color: white;
+            padding: 20px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 3px 15px rgba(190, 80, 130, 0.08);
+            position: relative;
+            z-index: 100;
+        }
+
+        .school-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 0;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .school-name h1 {
+            color: #d94f91;
+            font-size: 22px;
+            margin: 0;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+        }
+
+        .school-name p {
+            color: #999;
+            font-size: 13px;
+            margin: 3px 0 0;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar a {
+            color: #666;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: background-color 0.2s,
+                        color 0.2s,
+                        transform 0.2s;
+        }
+
+        .navbar a:hover {
+            background-color: #fff0f6;
+            color: #d94f91;
+            transform: translateY(-2px);
+        }
+
+        .navbar a.active {
+            background-color: #e77bad;
+            color: white;
+        }
+
+        .navbar a.active:hover {
+            background-color: #d94f91;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        .intro {
+            background-color: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .intro h1 {
+            color: #d94f91;
+            margin-top: 0;
+        }
+
+        .section {
+            background-color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+        }
+
+        .section h2 {
+            color: #d94f91;
+            margin-top: 0;
+        }
+
+        /* MILESTONE CARDS */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff7fb;
+            border: 1px solid #f5c8dc;
+            border-radius: 12px;
+            padding: 20px;
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .card h3 {
+            color: #d94f91;
+            margin-top: 0;
+        }
+
+        /* JOURNEY IMAGE */
+        .journey-image {
+            width: 100%;
+            max-width: 350px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            margin: 15px auto;
+        }
+
+        /* VIDEO SECTION */
+        .video-frame {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            margin: 20px auto;
+        }
+
+        .video-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
+        /* AUDIO SECTION */
+        audio {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .audio-box {
+            background-color: #fff7fb;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* FUTURE SELF MESSAGE */
+        .future-message {
+            background-color: #fff7fb;
+            border-left: 5px solid #e77bad;
+            padding: 20px;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 40px;
+            border-top: 3px solid #f8dce9;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        /* TABLET VIEW */
+        @media screen and (max-width: 950px) {
+            .header {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .school-brand {
+                justify-content: center;
+            }
+
+            .navbar {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        /* MOBILE VIEW */
+        @media screen and (max-width: 700px) {
+            .header {
+                padding: 18px 15px;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .school-name h1 {
+                font-size: 18px;
+            }
+
+            .school-name p {
+                font-size: 12px;
+            }
+
+            .navbar {
+                gap: 3px;
+            }
+
+            .navbar a {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 20px auto;
+            }
+
+            .intro,
+            .section {
+                padding: 25px 20px;
+            }
+
+            .cards {
+                flex-direction: column;
+            }
+        }
+
+        /* EXTRA SMALL SCREENS */
+        @media screen and (max-width: 400px) {
+            .school-name h1 {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .navbar a {
+                padding: 7px 8px;
+                font-size: 11px;
+            }
+
+            .intro,
+            .section {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <div class="school-brand">
+
+            <img src="ublogo.png"
+                 class="logo"
+                 alt="University of Batangas logo">
+
+            <div class="school-name">
+                <h1>UNIVERSITY OF BATANGAS</h1>
+                <p>Personal Student Website</p>
+            </div>
+
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="navbar">
+
+            <a href="index.html">Home</a>
+
+            <a href="achievements.html">Achievements</a>
+
+            <a href="myjourney.html" class="active">My Journey</a>
+
+            <a href="contacts.html">Contact</a>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <!-- INTRODUCTION -->
+        <section class="intro">
+
+            <h1>My Journey</h1>
+
+            <p>
+                Every experience has helped me become the person I am today.
+                My journey is filled with learning, challenges, new experiences,
+                and moments that remind me to keep moving forward.
+            </p>
+
+            <p>
+                I am still discovering what I can do and what I want to become.
+                This page is a small part of my story.
+            </p>
+
+        </section>
+
+        <!-- PERSONAL STORY -->
+        <section class="section">
+
+            <h2>My Story</h2>
+
+            <p>
+                As a student, I have learned that growth does not happen in one day.
+                There are times when things are easy, and there are times when I
+                need to work harder and learn from my mistakes.
+            </p>
+
+            <p>
+                Studying Information Technology has given me opportunities to
+                explore programming, technology, and creativity. Each activity
+                and lesson helps me understand myself better and reminds me that
+                there is always something new to learn.
+            </p>
+
+            <p>
+                I may not have everything figured out yet, but I am proud of
+                the progress I continue to make.
+            </p>
+
+            <!-- Palitan ang filename kapag may sarili kang picture -->
+            <video controls
+                   src="Video.mov"
+                   class="journey-image">
+                Your browser does not support the video element.
+            </video>
+
+        </section>
+
+        <!-- MILESTONES -->
+        <section class="section">
+
+            <h2>Milestones Along the Way</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Learning New Skills</h3>
+
+                    <p>
+                        Learning programming and web development has helped me
+                        become more patient and creative when solving problems.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>School Experiences</h3>
+
+                    <p>
+                        School activities and projects have taught me how to
+                        work with others, communicate, and take responsibility.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Personal Growth</h3>
+
+                    <p>
+                        I continue to learn from both my achievements and my
+                        mistakes. Each experience gives me a chance to improve.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- WHAT KEEPS ME GOING -->
+        <section class="section">
+
+            <h2>What Keeps Me Going</h2>
+
+            <p>
+                There are days when schoolwork feels difficult and I feel unsure
+                of myself. During those times, I remind myself that progress is
+                not always about being the best. Sometimes, it is about showing
+                up, trying again, and learning something from the experience.
+            </p>
+
+            <p>
+                I want to keep becoming someone who is willing to learn,
+                responsible for her choices, and brave enough to try new things.
+            </p>
+
+        </section>
+
+        <!-- MY DREAMS -->
+        <section class="section">
+
+            <h2>My Dreams</h2>
+
+            <p>
+                One of my goals is to become a skilled and responsible IT
+                professional. I want to continue learning about technology
+                and use what I know to create useful things that can help others.
+            </p>
+
+            <p>
+                I know that reaching this goal will take time, effort, and
+                patience. For now, I will focus on learning, gaining experience,
+                and taking one step at a time.
+            </p>
+
+        </section>
+
+        <!-- INSPIRATIONAL VIDEO -->
+        <section class="section">
+
+            <h2>A Video That Inspires Me</h2>
+
+            <div class="video-frame">
+
+                <iframe
+                    src="https://www.youtube.com/embed/B7H1noB47xs"
+                    title="A Video That Inspires Me"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </section>
+
+        <!-- PERSONAL SOUNDTRACK -->
+        <section class="section">
+
+            <h2>My Personal Soundtrack</h2>
+
+            <p>
+                Music can express feelings that are sometimes difficult to put
+                into words. I chose to include an audio section because a
+                personal journey is not only about what we do, but also about
+                what we feel and remember along the way.
+            </p>
+
+            <div class="audio-box">
+
+                <h3>A Sound for My Journey</h3>
+
+                <p>
+                    A calm instrumental or a short voice recording can represent
+                    the quiet moments when I reflect, recharge, and prepare
+                    myself for what comes next.
+                </p>
+
+                <audio controls>
+                    <source src="Harry Styles - Matilda (Music Video).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+            </div>
+
+        </section>
+
+        <!-- MESSAGE TO FUTURE SELF -->
+        <section class="section">
+
+            <h2>A Message to My Future Self</h2>
+
+            <div class="future-message">
+
+                <p>
+                    Dear future me,
+                </p>
+
+                <p>
+                    I hope you remember how far you have come and how much
+                    you have learned. Keep being curious, keep trying even
+                    when things become difficult, and do not be afraid to
+                    start again.
+                </p>
+
+                <p>
+                    I hope you are proud of the person you are becoming.
+                    Whatever happens, remember that this is only one part
+                    of your journey.
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+
+        <p>© 2026 University of Batangas</p>
+
+        <p>Web Development Project</p>
+
+    </div>
+
+</body>
+
+</html>

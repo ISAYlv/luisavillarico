@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <title>Home | My Personal Portfolio</title>
+
+    <style>
+
+        /* Para consistent ang sizing ng elements
+           and walang lalagpas sa kanilang containers. */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Main website theme.
+           Soft pink para consistent sa registration page. */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff0f6;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        /* HEADER
+           Logo, school name, and navigation are
+           arranged horizontally para compact. */
+        .header {
+            background-color: white;
+            padding: 20px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 3px 15px rgba(190, 80, 130, 0.08);
+            position: relative;
+            z-index: 100;
+        }
+
+        /* Logo and school name are grouped together. */
+        .school-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 0;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .school-name h1 {
+            color: #d94f91;
+            font-size: 22px;
+            margin: 0;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+        }
+
+        .school-name p {
+            color: #999;
+            font-size: 13px;
+            margin: 3px 0 0;
+        }
+
+        /* NAVIGATION
+           Links are beside the logo and school name.
+           Flexible ang layout para hindi mag-overlap. */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar a {
+            color: #666;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: background-color 0.2s,
+                        color 0.2s,
+                        transform 0.2s;
+        }
+
+        /* Hover effect para obvious na clickable
+           ang navigation links. */
+        .navbar a:hover {
+            background-color: #fff0f6;
+            color: #d94f91;
+            transform: translateY(-2px);
+        }
+
+        /* Active page indicator.
+           Home is highlighted dahil homepage ito. */
+        .navbar a.active {
+            background-color: #e77bad;
+            color: white;
+        }
+
+        .navbar a.active:hover {
+            background-color: #d94f91;
+        }
+
+        /* MAIN CONTAINER
+           Maximum width para readable ang content
+           kahit sa malalaking screens. */
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        /* BANNER
+           Rounded image with a clean white frame. */
+        .banner-box {
+            background-color: white;
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.10);
+            overflow: hidden;
+        }
+
+        .banner {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 13px;
+            display: block;
+        }
+
+        /* Consistent section design para cohesive
+           ang buong portfolio. */
+        .welcome,
+        .about,
+        .features {
+            background-color: white;
+            margin-top: 25px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+        }
+
+        .welcome h2,
+        .about h2,
+        .features h2 {
+            color: #d94f91;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* WELCOME SECTION
+           Centered intro para madaling makita
+           agad ng visitor ang purpose ng website. */
+        .welcome {
+            text-align: center;
+            padding: 45px 35px;
+        }
+
+        .welcome h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .welcome p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.9;
+            color: #666;
+        }
+
+        /* Register button is the main action
+           kaya mas visible ang pink design. */
+        .btn {
+            display: inline-block;
+            background-color: #e77bad;
+            color: white;
+            padding: 13px 30px;
+            margin-top: 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid #e77bad;
+            transition: background-color 0.2s,
+                        transform 0.2s,
+                        box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #d94f91;
+            border-color: #d94f91;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(217, 79, 145, 0.25);
+        }
+
+        /* ABOUT SECTION
+           Grid layout instead of table para
+           flexible and responsive ang columns. */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 35px;
+            align-items: start;
+        }
+
+        .about-column {
+            min-width: 0;
+        }
+
+        /* Profile picture stays proportional
+           and centered. */
+        .profile {
+            width: 180px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            display: block;
+            margin: 0 auto 20px;
+            object-fit: contain;
+            background-color: #fff0f6;
+        }
+
+        .about p {
+            line-height: 1.9;
+            color: #666;
+        }
+
+        /* Student information in separate rows
+           para easier to read and scan. */
+        .student-info {
+            background-color: #fff6fa;
+            border: 1px solid #f8e1ec;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .student-info p {
+            margin: 0;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3dce7;
+            line-height: 1.7;
+        }
+
+        .student-info p:last-child {
+            border-bottom: none;
+        }
+
+        .student-info b {
+            color: #d94f91;
+        }
+
+        /* Goals, interests, and message sections
+           have consistent spacing and typography. */
+        .features p {
+            color: #666;
+            line-height: 1.9;
+        }
+
+        .features ul {
+            padding-left: 25px;
+            color: #666;
+            line-height: 2;
+        }
+
+        .features li {
+            padding-left: 5px;
+            margin-bottom: 5px;
+        }
+
+        .features li::marker {
+            color: #e77bad;
+        }
+
+        /* FAVORITE SONG
+           Custom audio section para integrated
+           siya sa pink theme ng website. */
+        .song-section {
+            background-color: white;
+            margin-top: 25px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+            text-align: center;
+        }
+
+        .song-section h2 {
+            color: #d94f91;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .song-section p {
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        /* Audio player fits the container
+           para hindi lalagpas sa screen. */
+        .song-player {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: auto;
+        }
+
+        /* FOOTER
+           Simple ending that matches the theme. */
+        .footer {
+            background-color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 40px;
+            border-top: 3px solid #f8dce9;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        /* TABLET VIEW
+           Header can wrap kapag hindi kasya
+           ang logo and navigation sa isang row. */
+        @media screen and (max-width: 950px) {
+
+            .header {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .school-brand {
+                justify-content: center;
+            }
+
+            .navbar {
+                justify-content: center;
+                width: 100%;
+            }
+
+        }
+
+        /* MOBILE VIEW
+           One column layout para walang overlap. */
+        @media screen and (max-width: 700px) {
+
+            .header {
+                padding: 18px 15px;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .school-name h1 {
+                font-size: 18px;
+            }
+
+            .school-name p {
+                font-size: 12px;
+            }
+
+            .navbar {
+                gap: 3px;
+            }
+
+            .navbar a {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 20px auto;
+            }
+
+            .banner {
+                height: 200px;
+            }
+
+            .welcome,
+            .about,
+            .features,
+            .song-section {
+                padding: 25px 20px;
+            }
+
+            .welcome h2 {
+                font-size: 25px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .about h2,
+            .features h2,
+            .song-section h2 {
+                font-size: 22px;
+            }
+
+        }
+
+        /* EXTRA SMALL SCREENS
+           Smaller spacing para comfortable pa rin. */
+        @media screen and (max-width: 400px) {
+
+            .school-name h1 {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .navbar a {
+                padding: 7px 8px;
+                font-size: 11px;
+            }
+
+            .banner {
+                height: 160px;
+            }
+
+            .welcome,
+            .about,
+            .features,
+            .song-section {
+                padding: 20px 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <div class="school-brand">
+
+            <img src="ublogo.png"
+                 class="logo"
+                 alt="University of Batangas logo">
+
+            <div class="school-name">
+
+                <h1>UNIVERSITY OF BATANGAS</h1>
+
+                <p>Personal Student Website</p>
+
+            </div>
+
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="navbar">
+
+            <a href="index.html" class="active">Home</a>
+
+            <a href="achievements.html">Achievements</a>
+
+            <a href="myjourney.html">My Journey</a>
+
+            <a href="contacts.html">Contact</a>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <!-- BANNER -->
+        <div class="banner-box">
+
+            <img src="banner.webp"
+                 class="banner"
+                 alt="Personal portfolio banner">
+
+        </div>
+
+        <!-- WELCOME SECTION -->
+        <div class="welcome">
+
+            <h2>Welcome to My Website</h2>
+
+            <p>
+                Welcome to my personal website! This website was created as part
+                of our Introduction to Computing Laboratory Activity. Here, you can learn
+                more about me, view my achievements, access my contact details,
+                and complete the student registration form.
+            </p>
+
+            <a href="registration.html" class="btn">
+                Register Now
+            </a>
+
+        </div>
+
+        <!-- ABOUT ME AND STUDENT INFORMATION -->
+        <div class="about">
+
+            <div class="about-grid">
+
+                <!-- ABOUT ME -->
+                <div class="about-column">
+
+                    <h2>About Me</h2>
+
+                    <img src="Villarico_-_2x2_ID_Picture-removebg-preview.png"
+                         class="profile"
+                         alt="Luisa Villarico profile picture">
+
+                    <p>
+                        Hello! My name is <b>Luisa Villarico</b>.
+                        I am currently a student of the
+                        University of Batangas Lipa City.
+                    </p>
+
+                    <p>
+                        I enjoy exploring technology, learning
+                        web development, and creating projects
+                        that enhance my knowledge and skills
+                        in Information Technology.
+                    </p>
+
+                </div>
+
+                <!-- STUDENT INFORMATION -->
+                <div class="about-column">
+
+                    <h2>Student Information</h2>
+
+                    <div class="student-info">
+
+                        <p>
+                            <b>Name:</b> Luisa Villarico
+                        </p>
+
+                        <p>
+                            <b>School:</b> University of Batangas Lipa City
+                        </p>
+
+                        <p>
+                            <b>Course:</b> BS Information Technology
+                        </p>
+
+                        <p>
+                            <b>Year Level:</b> 1st Year
+                        </p>
+
+                        <p>
+                            <b>Interest:</b> Programming, Technology, Web Development
+                        </p>
+
+                        <p>
+                            <b>Goal:</b> To become a skilled IT professional and continue learning new technologies.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- STUDENT GOALS AND ASPIRATIONS -->
+        <div class="features">
+
+            <h2>Student Goals and Aspirations</h2>
+
+            <p>
+                As a student, I aim to continuously improve my knowledge,
+                skills, and understanding of technology. I believe that
+                education plays an important role in shaping a successful
+                future and helping individuals achieve their dreams.
+            </p>
+
+            <p>
+                My goal is to become a responsible and skilled professional
+                who can contribute positively to society through the use of
+                technology, innovation, and lifelong learning.
+            </p>
+
+        </div>
+
+        <!-- PERSONAL INTERESTS -->
+        <div class="features">
+
+            <h2>Personal Interests</h2>
+
+            <ul>
+
+                <li>Learning computer programming and web development</li>
+
+                <li>Exploring new technologies and digital tools</li>
+
+                <li>Participating in educational and school activities</li>
+
+                <li>Improving communication and leadership skills</li>
+
+                <li>Working on projects that enhance creativity and problem-solving skills</li>
+
+            </ul>
+
+        </div>
+
+        <!-- MY FAVORITE SONG -->
+        <div class="song-section">
+
+            <h2>My Favorite Song</h2>
+
+            <p>
+                A song that I enjoy listening to.
+            </p>
+
+            <audio class="song-player" controls>
+
+                <source src="Oasis - Wonderwall  (Official Video).mp3" type="audio/mpeg">
+
+                Your browser does not support the audio element.
+
+            </audio>
+
+        </div>
+
+        <!-- MESSAGE TO VISITORS -->
+        <div class="features">
+
+            <h2>Message to Visitors</h2>
+
+            <p>
+                Thank you for visiting my website. This webpage was created
+                as part of our Introduction to Computing subject and serves as a platform
+                where I can share information about myself, my academic journey,
+                achievements, and personal interests.
+            </p>
+
+            <p>
+                I hope that this website reflects the knowledge and skills that
+                I have gained through my studies and inspires me to continue
+                learning and improving in the field of technology.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+
+        <p>
+            © 2026 University of Batangas
+        </p>
+
+        <p>
+            Web Development Project
+        </p>
+
+    </div>
+
+</body>
+
+</html>

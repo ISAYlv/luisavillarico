@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <title>Contact | My Personal Portfolio</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff0f6;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        .header {
+            background-color: white;
+            padding: 20px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 3px 15px rgba(190, 80, 130, 0.08);
+            position: relative;
+            z-index: 100;
+        }
+
+        .school-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 0;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .school-name h1 {
+            color: #d94f91;
+            font-size: 22px;
+            margin: 0;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+        }
+
+        .school-name p {
+            color: #999;
+            font-size: 13px;
+            margin: 3px 0 0;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar a {
+            color: #666;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: background-color 0.2s,
+                        color 0.2s,
+                        transform 0.2s;
+        }
+
+        .navbar a:hover {
+            background-color: #fff0f6;
+            color: #d94f91;
+            transform: translateY(-2px);
+        }
+
+        .navbar a.active {
+            background-color: #e77bad;
+            color: white;
+        }
+
+        .navbar a.active:hover {
+            background-color: #d94f91;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        /* INTRODUCTION */
+        .intro {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .intro h2 {
+            color: #d94f91;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* CONTACT INFORMATION */
+        .contactbox {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .contactbox h2 {
+            color: #d94f91;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .contactdetails {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .detail {
+            background-color: #fff6fa;
+            border: 1px solid #f8e1ec;
+            padding: 15px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .detail b {
+            display: block;
+            color: #d94f91;
+            margin-bottom: 5px;
+        }
+
+        .detail p {
+            margin: 0;
+            overflow-wrap: break-word;
+            color: #666;
+        }
+
+        /* SOCIAL MEDIA CARDS */
+        .socialcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .socialcard {
+            background-color: #fff6fa;
+            border: 1px solid #f8e1ec;
+            width: 200px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: background-color 0.2s,
+                        transform 0.2s;
+        }
+
+        .socialcard:hover {
+            transform: translateY(-4px);
+            background-color: #ffe4ef;
+        }
+
+        .socialcard img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .socialcard h3 {
+            color: #d94f91;
+            margin: 5px 0;
+        }
+
+        .socialcard a {
+            color: #d94f91;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .socialcard a:hover {
+            text-decoration: underline;
+        }
+
+        /* CONTACT FORM */
+        .formbox {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+        }
+
+        .formbox h2 {
+            color: #d94f91;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .formbox p {
+            text-align: center;
+            color: #666;
+        }
+
+        .formbox label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .formbox input,
+        .formbox textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #f0a6c8;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        .formbox input:focus,
+        .formbox textarea:focus {
+            outline: none;
+            border: 1px solid #d94f91;
+        }
+
+        .formbox textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .formbox button {
+            background-color: #e77bad;
+            color: white;
+            border: 2px solid #e77bad;
+            padding: 12px 25px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s,
+                        transform 0.2s,
+                        box-shadow 0.2s;
+        }
+
+        .formbox button:hover {
+            background-color: #d94f91;
+            border-color: #d94f91;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(217, 79, 145, 0.25);
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 40px;
+            border-top: 3px solid #f8dce9;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        /* TABLET VIEW */
+        @media screen and (max-width: 950px) {
+
+            .header {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .school-brand {
+                justify-content: center;
+            }
+
+            .navbar {
+                justify-content: center;
+                width: 100%;
+            }
+
+        }
+
+        /* MOBILE VIEW */
+        @media screen and (max-width: 700px) {
+
+            .header {
+                padding: 18px 15px;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .school-name h1 {
+                font-size: 18px;
+            }
+
+            .school-name p {
+                font-size: 12px;
+            }
+
+            .navbar {
+                gap: 3px;
+            }
+
+            .navbar a {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 20px auto;
+            }
+
+            .intro,
+            .contactbox,
+            .formbox {
+                padding: 25px 20px;
+            }
+
+            .socialcard {
+                width: 100%;
+                max-width: 300px;
+            }
+
+        }
+
+        /* EXTRA SMALL SCREENS */
+        @media screen and (max-width: 400px) {
+
+            .school-name h1 {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .navbar a {
+                padding: 7px 8px;
+                font-size: 11px;
+            }
+
+            .intro,
+            .contactbox,
+            .formbox {
+                padding: 20px 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <div class="school-brand">
+
+            <img src="ublogo.png"
+                 class="logo"
+                 alt="University of Batangas logo">
+
+            <div class="school-name">
+
+                <h1>UNIVERSITY OF BATANGAS</h1>
+
+                <p>Personal Student Website</p>
+
+            </div>
+
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="navbar">
+
+            <a href="index.html">Home</a>
+
+            <a href="achievements.html">Achievements</a>
+
+            <a href="myjourney.html">My Journey</a>
+
+            <a href="contacts.html" class="active">Contact</a>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <!-- INTRODUCTION -->
+        <div class="intro">
+
+            <h2>Get in Touch</h2>
+
+            <p>
+                Thank you for visiting my website! You can find my
+                contact information and social media links below.
+                Feel free to send me a message through the contact form.
+            </p>
+
+        </div>
+
+        <!-- CONTACT INFORMATION -->
+        <div class="contactbox">
+
+            <h2>My Contact Information</h2>
+
+            <div class="contactdetails">
+
+                <div class="detail">
+
+                    <b>Complete Name</b>
+
+                    <p>Luisa E. Villarico</p>
+
+                </div>
+
+                <div class="detail">
+
+                    <b>Email Address</b>
+
+                    <p>luisavillarico25@gmail.com</p>
+
+                </div>
+
+                <div class="detail">
+
+                    <b>Contact Number</b>
+
+                    <p>09998838137</p>
+
+                </div>
+
+                <div class="detail">
+
+                    <b>Home Address</b>
+
+                    <p>San Juan, Batangas</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SOCIAL MEDIA -->
+        <div class="contactbox">
+
+            <h2>My Social Media</h2>
+
+            <div class="socialcontainer">
+
+                <div class="socialcard">
+
+                    <img src="fblogo.png" alt="Facebook Logo">
+
+                    <h3>Facebook</h3>
+
+                    <a href="https://www.facebook.com/" target="_blank">
+                        Visit my Facebook
+                    </a>
+
+                </div>
+
+                <div class="socialcard">
+
+                    <img src="iglogo.png" alt="Instagram Logo">
+
+                    <h3>Instagram</h3>
+
+                    <a href="https://www.instagram.com/" target="_blank">
+                        Visit my Instagram
+                    </a>
+
+                </div>
+
+                <div class="socialcard">
+
+                    <img src="teketokologo.png" alt="TikTok Logo">
+
+                    <h3>TikTok</h3>
+
+                    <a href="https://www.tiktok.com/" target="_blank">
+                        Visit my TikTok
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="formbox">
+
+            <h2>Contact Me</h2>
+
+            <p>
+                If you want to send me a message, you can fill out
+                the form below.
+            </p>
+
+            <form>
+
+                <label for="name">Name:</label>
+
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Submit</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+
+        <p>© 2026 University of Batangas</p>
+
+        <p>Web Development Project</p>
+
+    </div>
+
+</body>
+
+</html>

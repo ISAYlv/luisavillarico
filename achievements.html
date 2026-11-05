@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <title>Achievements | My Personal Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff0f6;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        .header {
+            background-color: white;
+            padding: 20px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 3px 15px rgba(190, 80, 130, 0.08);
+            position: relative;
+            z-index: 100;
+        }
+
+        .school-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 0;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .school-name h1 {
+            color: #d94f91;
+            font-size: 22px;
+            margin: 0;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+        }
+
+        .school-name p {
+            color: #999;
+            font-size: 13px;
+            margin: 3px 0 0;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navbar a {
+            color: #666;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: background-color 0.2s,
+                        color 0.2s,
+                        transform 0.2s;
+        }
+
+        .navbar a:hover {
+            background-color: #fff0f6;
+            color: #d94f91;
+            transform: translateY(-2px);
+        }
+
+        .navbar a.active {
+            background-color: #e77bad;
+            color: white;
+        }
+
+        .navbar a.active:hover {
+            background-color: #d94f91;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        /* INTRODUCTION */
+        .intro {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+            margin-bottom: 35px;
+        }
+
+        .intro h2 {
+            color: #d94f91;
+            margin-top: 0;
+        }
+
+        .intro p {
+            line-height: 1.8;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* SECTION HEADINGS */
+        .sectiontitle {
+            color: #d94f91;
+            text-align: center;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+
+        /* ACHIEVEMENT CARDS */
+        .cardcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            width: 280px;
+            padding: 18px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+            text-align: center;
+            transition: transform 0.2s,
+                        box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(217, 79, 145, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            color: #d94f91;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            line-height: 1.7;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* ACHIEVEMENT SUMMARY */
+        .listsection {
+            background-color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+            margin-top: 35px;
+        }
+
+        .listsection h2,
+        .listsection h3 {
+            color: #d94f91;
+        }
+
+        .listsection ol,
+        .listsection ul {
+            line-height: 2;
+            padding-left: 25px;
+            color: #444;
+        }
+
+        /* CLOSING MESSAGE */
+        .closing {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(190, 80, 130, 0.08);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .closing h2 {
+            color: #d94f91;
+            margin-top: 0;
+        }
+
+        .closing p {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 40px;
+            border-top: 3px solid #f8dce9;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        /* TABLET VIEW */
+        @media screen and (max-width: 950px) {
+            .header {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .school-brand {
+                justify-content: center;
+            }
+
+            .navbar {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        /* MOBILE VIEW */
+        @media screen and (max-width: 700px) {
+            .header {
+                padding: 18px 15px;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .school-name h1 {
+                font-size: 18px;
+            }
+
+            .school-name p {
+                font-size: 12px;
+            }
+
+            .navbar {
+                gap: 3px;
+            }
+
+            .navbar a {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 20px auto;
+            }
+
+            .intro,
+            .listsection,
+            .closing {
+                padding: 25px 20px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        /* EXTRA SMALL SCREENS */
+        @media screen and (max-width: 400px) {
+            .school-name h1 {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .navbar a {
+                padding: 7px 8px;
+                font-size: 11px;
+            }
+
+            .intro,
+            .listsection,
+            .closing {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <div class="school-brand">
+
+            <img src="ublogo.png"
+                 class="logo"
+                 alt="University of Batangas logo">
+
+            <div class="school-name">
+                <h1>UNIVERSITY OF BATANGAS</h1>
+                <p>Personal Student Website</p>
+            </div>
+
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="navbar">
+
+            <a href="indexnew.html">Home</a>
+
+            <a href="achievements.html" class="active">Achievements</a>
+
+            <a href="myjourney.html">My Journey</a>
+
+            <a href="contactsnew.html">Contact</a>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <!-- INTRODUCTION -->
+        <div class="intro">
+
+            <h2>My Achievements</h2>
+
+            <p>
+                Welcome to my achievements page! Here, I share some
+                of my academic achievements, awards, school activities,
+                and leadership experiences. These experiences have
+                been part of my journey as a student and have helped
+                me grow, learn, and improve myself.
+            </p>
+
+        </div>
+
+        <!-- ACADEMIC ACHIEVEMENTS -->
+        <h2 class="sectiontitle">Academic Achievements</h2>
+
+        <div class="cardcontainer">
+
+            <div class="card">
+
+                <img src="9fe5cad2-5f9d-46f3-9858-8d5d9c6d3c30.jpg"
+                     alt="With Honors">
+
+                <h3>With Honors</h3>
+
+                <p>
+                    Received With Honors recognition from elementary
+                    school through high school in recognition of my
+                    academic performance.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="2458599e-b7f9-4483-b4b6-0c43c6b3694a.jpg"
+                     alt="With High Honors">
+
+                <h3>With High Honors</h3>
+
+                <p>
+                    Received With High Honors recognition during
+                    senior high school for my academic performance.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- AWARDS AND RECOGNITIONS -->
+        <h2 class="sectiontitle">Awards and Recognitions</h2>
+
+        <div class="cardcontainer">
+
+            <div class="card">
+
+                <img src="06adaaec-f5d5-447f-b830-b531ef3411ba.jpg"
+                     alt="Top Performing Student Award">
+
+                <h3>Top Performing Student</h3>
+
+                <p>
+                    Recognized as a Top Performing Student for my
+                    performance as a student.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="06adaaec-f5d5-447f-b830-b531ef3411ba.jpg"
+                     alt="Diligent Award">
+
+                <h3>Diligent Awardee</h3>
+
+                <p>
+                    Recognized for diligence and effort in fulfilling
+                    my responsibilities.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="65a4fca4-7e0b-42aa-b7aa-24e4b654aa94.jpg"
+                     alt="Honest Award">
+
+                <h3>Honest Awardee</h3>
+
+                <p>
+                    Received recognition for honesty and showing
+                    honesty in my actions.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="65a4fca4-7e0b-42aa-b7aa-24e4b654aa94.jpg"
+                     alt="Committed Award">
+
+                <h3>Committed Awardee</h3>
+
+                <p>
+                    Recognized for commitment and dedication to
+                    my responsibilities.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- SCHOOL ACTIVITIES -->
+        <h2 class="sectiontitle">School Activities and Accomplishments</h2>
+
+        <div class="cardcontainer">
+
+            <div class="card">
+
+                <img src="8a9fa249-69ba-41f3-91c1-6eafb0b69dff.jpg"
+                     alt="Leadership Program">
+
+                <h3>Leadership Program</h3>
+
+                <p>
+                    Participated in a leadership program as part of
+                    my school experiences and personal development.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="587a9fa3-01a8-4021-8f14-5d710c26ddd2.jpg"
+                     alt="Hackathon 2026">
+
+                <h3>Hackathon 2026</h3>
+
+                <p>
+                    Achieved 6th place in Hackathon 2026, an
+                    accomplishment that became part of my journey
+                    in technology and programming.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="36646b66-89a8-4267-bf48-043cd09530a0.jpg"
+                     alt="Culminating Activities">
+
+                <h3>Culminating Activities</h3>
+
+                <p>
+                    Took part in culminating activities that were
+                    part of my school and organization experiences.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- LEADERSHIP AND ORGANIZATIONS -->
+        <h2 class="sectiontitle">Leadership and Organizations</h2>
+
+        <div class="cardcontainer">
+
+            <div class="card">
+
+                <img src="9f053fef-f45b-449a-9c27-57db5223475c.jpg"
+                     alt="ICT Organization Vice President">
+
+                <h3>ICT Organization Vice President</h3>
+
+                <p><b>2024</b></p>
+
+                <p>
+                    Served as Vice President of the ICT organization,
+                    taking part in student leadership and
+                    organization activities.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="2e4be0d3-8b3e-407a-9da2-e1deb302f9f2.jpg"
+                     alt="ICT Organization President">
+
+                <h3>ICT Organization President</h3>
+
+                <p><b>2025</b></p>
+
+                <p>
+                    Served as President of the ICT organization,
+                    helping organize activities and supporting
+                    student participation in ICT-related events.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <img src="d0738270-305d-4f7f-b013-99d1bf626718.jpg"
+                     alt="Class Vice President">
+
+                <h3>Class Vice President</h3>
+
+                <p><b>2024–2026</b></p>
+
+                <p>
+                    Served as Class Vice President, taking on
+                    leadership responsibilities and helping
+                    support my classmates.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- SUMMARY OF ACHIEVEMENTS -->
+        <div class="listsection">
+
+            <h2>My Achievements at a Glance</h2>
+
+            <h3>Academic Achievements</h3>
+
+            <ol>
+                <li>With Honors from elementary school through high school</li>
+                <li>With High Honors during senior high school</li>
+                <li>6th place in Hackathon 2026</li>
+            </ol>
+
+            <h3>Awards and Recognitions</h3>
+
+            <ul>
+                <li>Top Performing Student</li>
+                <li>Diligent Awardee</li>
+                <li>Honest Awardee</li>
+                <li>Committed Awardee</li>
+            </ul>
+
+            <h3>School Activities and Leadership</h3>
+
+            <ul>
+                <li>ICT Organization Vice President in 2024</li>
+                <li>ICT Organization President in 2025</li>
+                <li>Class Vice President from 2024 to 2026</li>
+                <li>Participation in leadership programs and culminating activities</li>
+            </ul>
+
+        </div>
+
+        <!-- CLOSING MESSAGE -->
+        <div class="closing">
+
+            <h2>Looking Back on My Journey</h2>
+
+            <p>
+                Each achievement and experience has been a meaningful
+                part of my student life. From academic recognition
+                to leadership roles and technology-related activities,
+                these experiences encourage me to continue learning,
+                improving my skills, and doing my best in the things
+                I take part in.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+
+        <p>© 2026 University of Batangas</p>
+
+        <p>Web Development Project</p>
+
+    </div>
+
+</body>
+
+</html>
